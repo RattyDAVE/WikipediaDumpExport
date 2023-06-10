@@ -84,10 +84,10 @@ def process_file_text(filename, savedir):
             elif '</page>' in line:  # end of article
                 #Thread(target=save_article, args=(article, savedir)).start()
                 
-                #with concurrent.futures.ThreadPoolExecutor(max_workers=24) as executor:
-                #    executor.submit(save_article, article, savedir)
+                with concurrent.futures.ThreadPoolExecutor(max_workers=24) as executor:
+                    executor.submit(save_article, article, savedir)
                 
-                save_article(article, savedir)
+                #save_article(article, savedir)
                 
                 #DEBUG for 1 article
                 exit()
