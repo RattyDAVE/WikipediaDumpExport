@@ -9,6 +9,7 @@ import bz2
 import urllib.request
 import os
 import concurrent.futures
+import argparse
 
 
 def dewiki(text):
@@ -65,6 +66,7 @@ def save_article(article, savedir):
         print('SAVING:', doc['title'])
         #filename = doc['id'] + '.json'
         filename = slugify(doc['title'])  + '.txt'
+        os.makedirs(savedir, exist_ok=True)
         os.makedirs(savedir + filename[0], exist_ok=True)
         with open(savedir + filename[0] + '/' + filename, 'w', encoding='utf-8') as outfile:
             #json.dump(doc, outfile, sort_keys=True, indent=1, ensure_ascii=False)
@@ -101,10 +103,17 @@ def process_file_text(filename, savedir):
 ####### START HERE ######
 
 if __name__ == '__main__':
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--url', type=str, required=False, help="location of wikimedia download", default="https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2")
+    parser.add_argument('--out', type=str, required=False, help="output directory", default="./out/")
     
-    url = "https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2"
-    filename = "simplewiki-latest-pages-articles.xml.bz2"
+    args = parser.parse_args()
+    
+    #url = "https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2"
+    #filename = "simplewiki-latest-pages-articles.xml.bz2"
+
+    url = args.url
+    filename = print(os.path.basename(url).split('/')[-1])
 
     if os.path.exists(filename):
         print(f"The file '{filename}' exists.")
@@ -115,6 +124,8 @@ if __name__ == '__main__':
 
     #wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
     #wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml'  # update this
-    json_save_dir = '/share/out/'
- 
+    #json_save_dir = '/share/out/'
+
+    json_save_dir = args.out
+    
     process_file_text(filename, json_save_dir)
