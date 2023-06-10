@@ -97,11 +97,6 @@ def process_file_text(filename, savedir):
 
 ####### START HERE ######
 
-#wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
-#wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml'  # update this
-wiki_xml_file = 'simplewiki-latest-pages-articles.xml.bz2'  # update this
-json_save_dir = '/share/out/'
-
 if __name__ == '__main__':
 
     
@@ -117,7 +112,6 @@ if __name__ == '__main__':
 
     #wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
     #wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml'  # update this
-    wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml.bz2'  # update this
     json_save_dir = '/share/out/'
  
-    process_file_text(wiki_xml_file, json_save_dir)
+    process_file_text(filename, json_save_dir)
