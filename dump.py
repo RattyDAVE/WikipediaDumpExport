@@ -99,7 +99,7 @@ def process_file_text(filename, savedir):
 
 #wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
 #wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml'  # update this
-wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml.bz2'  # update this
+wiki_xml_file = 'simplewiki-latest-pages-articles.xml.bz2'  # update this
 json_save_dir = '/share/out/'
 
 if __name__ == '__main__':
