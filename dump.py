@@ -6,7 +6,7 @@ import wikitextparser as wtp
 import unicodedata
 
 import bz2
-import urllib.request
+import urllib
 import os
 import concurrent.futures
 import argparse
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     #filename = "simplewiki-latest-pages-articles.xml.bz2"
 
     url = args.url
-    filename = print(os.path.basename(url).split('/')[-1])
+    filename = os.path.basename(url).split('/')[-1]
 
     if os.path.exists(filename) and not args.F:
         print(f"The file '{filename}' exists.")
