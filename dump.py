@@ -66,7 +66,7 @@ def save_article(article, savedir):
         #filename = doc['id'] + '.json'
         filename = slugify(doc['title'])  + '.txt'
         os.makedirs(savedir + filename[0], exist_ok=True)
-        with open(savedir + filename[0] + filename, 'w', encoding='utf-8') as outfile:
+        with open(savedir + filename[0] + '/' + filename, 'w', encoding='utf-8') as outfile:
             #json.dump(doc, outfile, sort_keys=True, indent=1, ensure_ascii=False)
             outfile.write(doc['text'] + '\n')
 
