@@ -16,7 +16,8 @@ def dewiki(text):
     For cleaning up ariticle text
     """
 
-    text = wtp.parse(text).plain_text()  # wiki to plaintext 
+    #text = wtp.parse(text).plain_text()  # wiki to plaintext 
+    text = wtp.parse(text) 
     #text = htt(text)  # remove any HTML
     #text = text.replace('\\n',' ')  # replace newlines
     #text = re.sub('\s+', ' ', text)  # replace excess whitespace
