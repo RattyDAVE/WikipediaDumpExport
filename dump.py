@@ -90,7 +90,7 @@ def process_file_text(filename, savedir):
                 #save_article(article, savedir)
                 
                 #DEBUG for 1 article
-                exit()
+                #exit()
                 #End DEBUG
             else:
                 article += line
