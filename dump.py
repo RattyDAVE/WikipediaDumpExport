@@ -1,4 +1,4 @@
-from threading import Thread
+#from threading import Thread
 import json
 import re
 from html2text import html2text as htt
@@ -8,6 +8,8 @@ import unicodedata
 import bz2
 import urllib.request
 import os
+import concurrent.futures
+
 
 def dewiki(text):
     text = wtp.parse(text).plain_text()  # wiki to plaintext 
