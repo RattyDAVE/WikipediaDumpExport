@@ -104,17 +104,14 @@ def process_file_text(filename, savedir):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--url', type=str, required=False, help="location of wikimedia download", default="https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2")
-    parser.add_argument('--out', type=str, required=False, help="output directory", default="./out/")
+    parser.add_argument('--url', type=str, required=False, help="location of wikimedia download (default is latest simple wikipedia)", default="https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2")
+    parser.add_argument('--out', type=str, required=False, help="output directory (default is ./out/)", default="./out/")
     parser.add_argument('-F', action='store_true', required=False, help="force download")
-    
     args = parser.parse_args()
     
-    #url = "https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2"
-    #filename = "simplewiki-latest-pages-articles.xml.bz2"
-
     url = args.url
     filename = os.path.basename(url).split('/')[-1]
+    save_dir = args.out
 
     if os.path.exists(filename) and not args.F:
         print(f"The file '{filename}' exists.")
@@ -122,11 +119,5 @@ if __name__ == '__main__':
         print(f"The file '{filename}' is downloading")
         urllib.request.urlretrieve(url, filename)
         print("Download complete!")                
-
-    #wiki_xml_file = 'F:/simplewiki-20210401/simplewiki-20210401.xml'  # update this
-    #wiki_xml_file = '/share/simplewiki-latest-pages-articles.xml'  # update this
-    #json_save_dir = '/share/out/'
-
-    json_save_dir = args.out
     
-    process_file_text(filename, json_save_dir)
+    process_file_text(filename, save_dir)
