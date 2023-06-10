@@ -6,7 +6,7 @@ import wikitextparser as wtp
 import unicodedata
 
 import bz2
-import urllib
+import urllib.request
 import os
 import concurrent.futures
 import argparse
