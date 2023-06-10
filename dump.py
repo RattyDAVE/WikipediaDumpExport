@@ -106,6 +106,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', type=str, required=False, help="location of wikimedia download", default="https://dumps.wikimedia.org/simplewiki/latest/simplewiki-latest-pages-articles.xml.bz2")
     parser.add_argument('--out', type=str, required=False, help="output directory", default="./out/")
+    parser.add_argument('-F', action='store_true', required=False, help="force download")
     
     args = parser.parse_args()
     
@@ -115,10 +116,10 @@ if __name__ == '__main__':
     url = args.url
     filename = print(os.path.basename(url).split('/')[-1])
 
-    if os.path.exists(filename):
+    if os.path.exists(filename) and not args.F:
         print(f"The file '{filename}' exists.")
     else:
-        print(f"The file '{filename}' does not exist. Downloading")
+        print(f"The file '{filename}' is downloading")
         urllib.request.urlretrieve(url, filename)
         print("Download complete!")                
 
