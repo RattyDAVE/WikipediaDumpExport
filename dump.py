@@ -12,6 +12,10 @@ import concurrent.futures
 
 
 def dewiki(text):
+    """
+    For cleaning up ariticle text
+    """
+
     text = wtp.parse(text).plain_text()  # wiki to plaintext 
     text = htt(text)  # remove any HTML
     #text = text.replace('\\n',' ')  # replace newlines
@@ -20,6 +24,10 @@ def dewiki(text):
 
 
 def analyze_chunk(text):
+    """
+    Do we have an article? between <page> and </page>
+    """
+
     try:
         if '<redirect title="' in text:  # this is not the main article
             return None
@@ -62,6 +70,10 @@ def save_article(article, savedir):
 
 
 def process_file_text(filename, savedir):
+    """
+    Main Loop
+    """
+
     article = ''
     #with open(filename, 'r', encoding='utf-8') as infile:
     with bz2.open(filename, 'r', encoding='utf-8') as infile:
