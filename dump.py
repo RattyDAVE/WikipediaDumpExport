@@ -76,7 +76,7 @@ def process_file_text(filename, savedir):
 
     article = ''
     #with open(filename, 'r', encoding='utf-8') as infile:
-    with bz2.open(filename, 'r') as infile:
+    with bz2.open(filename, 'rt') as infile:
         for line in infile:
             if '<page>' in line:
                 article = ''
